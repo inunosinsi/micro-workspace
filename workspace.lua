@@ -53,6 +53,27 @@ function find(bp, args)
     end
 end
 
+function ftree(bp, args)
+	local dir = rootDir()
+
+	local cmd = "sh -c 'find "..dir.." -type d -name "
+	local pattern = ""
+	
+	for i = 1, #args do
+		pattern = "\""..args[i] .."*\" "
+	end
+
+	cmd = cmd .. pattern .. "| fzf --preview \"tree -C {} | head -200\"'"
+	--micro.InfoBar():Error(cmd)
+
+	local output, err = shell.RunInteractiveShell(cmd, false, true)
+    if err ~= nil then
+    	micro.InfoBar():Error(err)
+    else
+        fzfOutput(output, {bp})
+    end
+end
+
 function rg(bp, args)
 	local dir = rootDir()
 
@@ -90,6 +111,10 @@ function init()
 	config.MakeCommand("find", function(bp, args)
     	find(bp, args)
     end, config.NoComplete)
+
+    config.MakeCommand("ftree", function(bp, args)
+       	ftree(bp, args)
+	end, config.NoComplete)
 
     config.MakeCommand("rg", function(bp, args)
        	rg(bp, args)
