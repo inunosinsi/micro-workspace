@@ -8,4 +8,7 @@ $ git clone https://github.com/inunosinsi/micro-workspace.git ~/.config/micro/pl
 ```
 ## Usage
 When opening a file.  
-```> find PATTERN```
+```> find PATTERN```  
+
+When searching for files by pattern.
+```> rg PATTERN```
