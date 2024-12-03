@@ -29,7 +29,7 @@ function rootDir()
 	if dir:len() > 1 then
 		return dir.."/"
 	else
-		return os.Getwd().."/"
+		return "./"
 	end
 end
 
