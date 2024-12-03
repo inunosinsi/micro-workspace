@@ -10,5 +10,5 @@ $ git clone https://github.com/inunosinsi/micro-workspace.git ~/.config/micro/pl
 When opening a file.  
 ```> find PATTERN```  
 
-When searching for files by pattern.
+When searching for files by pattern.  
 ```> rg PATTERN```
