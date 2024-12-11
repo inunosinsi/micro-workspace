@@ -3,7 +3,7 @@ This repository holds the find plugin for micro. This plugin has been updated fo
 ## Install  
 ```
 $ sudo apt update
-$ sudo apt install git fzf rg
+$ sudo apt install git fzf ripgrep
 $ git clone https://github.com/inunosinsi/micro-workspace.git ~/.config/micro/plug/workspace
 ```
 ## Usage
