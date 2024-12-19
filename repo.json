@@ -1,11 +1,7 @@
 [
-    {
-        "Name": "micro-workspace",
-        "Description": "",
-        "Website": "https://saitodev.co/microbit/editor/article/128",
-        "Tags": ["find", "rg", "fzf"],
-        "Versions": [
-        ]
-    }
+	{
+		"Name": "micro-workspace",
+		"Description": "...",
+		"Tags": ["find", "fzf", "rg", "tree"]
+	}
 ]
-
