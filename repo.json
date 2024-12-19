@@ -1,6 +1,6 @@
 [
 	{
-		"Name": "micro-workspace",
+		"Name": "workspace",
 		"Description": "...",
 		"Tags": ["find", "fzf", "rg", "tree"]
 	}
