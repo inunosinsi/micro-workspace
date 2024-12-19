@@ -119,4 +119,6 @@ function init()
     config.MakeCommand("rg", function(bp, args)
        	rg(bp, args)
 	end, config.NoComplete)
+
+	config.AddRuntimeFile("workspace", config.RTHelp, "help/workspace.md")
 end
