@@ -46,11 +46,11 @@ function find(bp, args)
 	cmd = cmd .. pattern .. "| fzf'"
 
 	local output, err = shell.RunInteractiveShell(cmd, false, true)
-    if err ~= nil then
-    	micro.InfoBar():Error(err)
-    else
-        fzfOutput(output, {bp})
-    end
+	if err ~= nil then
+		micro.InfoBar():Error(err)
+	else
+		fzfOutput(output, {bp})
+	end
 end
 
 function ftree(bp, args)
@@ -64,14 +64,13 @@ function ftree(bp, args)
 	end
 
 	cmd = cmd .. pattern .. "| fzf --preview \"tree -C {} | head -200\"'"
-	--micro.InfoBar():Error(cmd)
 
 	local output, err = shell.RunInteractiveShell(cmd, false, true)
-    if err ~= nil then
-    	micro.InfoBar():Error(err)
-    else
-        fzfOutput(output, {bp})
-    end
+	if err ~= nil then
+		micro.InfoBar():Error(err)
+	else
+		fzfOutput(output, {bp})
+	end
 end
 
 function rg(bp, args)
@@ -90,35 +89,25 @@ function rg(bp, args)
     if err ~= nil then
     	micro.InfoBar():Error(err)
     else
-        fzfOutput(output, {bp})
+    	fzfOutput(output, {bp})
     end
 end
 
 function fzfOutput(output, args)
-    local bp = args[1]
-    local strings = import("strings")
-    output = strings.TrimSpace(output)
-    print(output)
-    if output ~= "" then
-        local buf, err = buffer.NewBufferFromFile(output)
-        if err == nil then
-            bp:OpenBuffer(buf)
-        end
-    end
+	local bp = args[1]
+	local strings = import("strings")
+	output = strings.TrimSpace(output)
+	print(output)
+	if output ~= "" then
+		local buf, err = buffer.NewBufferFromFile(output)
+		if err == nil then
+			bp:OpenBuffer(buf)
+		end
+	end
 end
 
 function init()
-	config.MakeCommand("find", function(bp, args)
-    	find(bp, args)
-    end, config.NoComplete)
-
-    config.MakeCommand("ftree", function(bp, args)
-       	ftree(bp, args)
-	end, config.NoComplete)
-
-    config.MakeCommand("rg", function(bp, args)
-       	rg(bp, args)
-	end, config.NoComplete)
-
-	config.AddRuntimeFile("workspace", config.RTHelp, "help/workspace.md")
+	config.MakeCommand("find", find, config.NoComplete)
+	config.MakeCommand("ftree", ftree, config.NoComplete)
+	config.MakeCommand("rg", rg, config.NoComplete)
 end
